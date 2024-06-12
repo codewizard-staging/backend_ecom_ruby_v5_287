@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Model">
+            <EntityType HasStream="false" Name="User">
+                <Key>
+                    <PropertyRef Name="UserName"/>
+                </Key>
+                <Property Name="UserName" Type="Edm.String" isUnique="false"/>
+                <Property Name="EmailAddress" Type="Edm.String" isUnique="false"/>
+                <Property Name="PhoneNumber" Type="Edm.String" isUnique="false"/>
+                <Property Name="AlternatePhone" Type="Edm.String" isUnique="false"/>
+                <Property Name="Name" Type="Edm.String" isUnique="false"/>
+                <Property Name="Attribute6" Type="Edm.String" isUnique="false"/>
+                <Property Name="Attribute7" Type="Edm.Boolean" isUnique="false"/>
+            </EntityType>
+            <EntityType HasStream="false" Name="ShipmentItem">
+                <Key>
+                    <PropertyRef Name="Shipment_item_id"/>
+                </Key>
+                <Property Name="Shipment_item_id" Type="Edm.Int32" isUnique="false"/>
+                <Property Name="Order_item_id" Type="Edm.Int32" isUnique="false"/>
+                <NavigationProperty Name="OrderItemShipment" Type="Model.OrderItem"/>
+            </EntityType>
+            <EntityType HasStream="false" Name="PComponent">
+                <Key>
+                    <PropertyRef Name="CompId"/>
+                </Key>
+                <Property Name="CompId" Type="Edm.Int32" isUnique="false"/>
+                <Property Name="Name" Type="Edm.String" isUnique="false"/>
+                <Property Name="Description" Type="Edm.String" isUnique="false"/>
+                <Property Name="Color" Type="Edm.String" isUnique="false"/>
+                <Property Name="Size" Type="Edm.String" isUnique="false"/>
+                <Property Name="Manufacturer" Type="Edm.String" isUnique="false"/>
+                <Property Name="Address" Type="Model.Address" isUnique="false"/>
+            </EntityType>
+            <EntityType HasStream="false" Name="OrderItem">
+                <Key>
+                    <PropertyRef Name="Order_item_id"/>
+                </Key>
+                <Property Name="Order_item_id" Type="Edm.Int32" isUnique="false"/>
+                <Property Name="Order_item_quantity" Type="Edm.Int32" isUnique="false"/>
+                <Property Name="Order_item_price" Type="Edm.Decimal" isUnique="false"/>
+                <Property Name="RMA_number" Type="Edm.Int32" isUnique="false"/>
+                <Property Name="RMA_issued_by" Type="Edm.String" isUnique="false"/>
+                <Property Name="RMA_issued_date" Type="Edm.DateTimeOffset" isUnique="false"/>
+                <Property Name="Other_order_item_details" Type="Edm.String" isUnique="false"/>
+                <Property Name="Order_item_status" Type="Edm.String" isUnique="false"/>
+                <NavigationProperty Name="OIProduct" Type="Model.Product"/>
+            </EntityType>
+            <EntityType HasStream="true" Name="Document">
+                <Key>
+                    <PropertyRef Name="DocId"/>
+                </Key>
+                <Property Name="DocId" Type="Edm.Int32" isUnique="false"/>
+                <Property Name="DocType" Type="Edm.String" isUnique="false"/>
+                <Property Name="DocName" Type="Edm.String" isUnique="false"/>
+                <Property Name="DocPath" Type="Edm.String" isUnique="false"/>
+                <Property Name="DocDescription" Type="Edm.String" isUnique="false"/>
+                <Property Name="DocExt" Type="Edm.String" isUnique="false"/>
+            </EntityType>
+            <EntityType HasStream="false" Name="ProductOnBoarding">
+                <Key>
+                    <PropertyRef Name="PbId"/>
+                </Key>
+                <Property Name="PbId" Type="Edm.Int32" isUnique="false"/>
+                <Property Name="Username" Type="Edm.String" isUnique="false"/>
+                <Property Name="Name" Type="Edm.String" isUnique="false"/>
+                <Property Name="Description" Type="Edm.String" isUnique="false"/>
+                <Property Name="Status" Type="Model.OnBoardingStatus" isUnique="false"/>
+                <Property Name="LastStep" Type="Edm.Int32" isUnique="false"/>
+                <NavigationProperty Name="ProductInContext" Type="Model.Product"/>
+            </EntityType>
+            <EntityType HasStream="false" Name="ProductPrice">
+                <Key>
+                    <PropertyRef Name="PpId"/>
+                </Key>
+                <Property Name="PpId" Type="Edm.Int32" isUnique="false"/>
+                <Property Name="Price" Type="Edm.Decimal" isUnique="false"/>
+                <Property Name="DiscountGroup" Type="Edm.String" isUnique="false"/>
+                <Property Name="IsVatIncluded" Type="Edm.Boolean" isUnique="false"/>
+            </EntityType>
+            <EntityType HasStream="false" Name="Order">
+                <Key>
+                    <PropertyRef Name="OrderId"/>
+                </Key>
+                <Property Name="OrderId" Type="Edm.Int32" isUnique="false"/>
+                <Property Name="Date" Type="Edm.DateTimeOffset" isUnique="false"/>
+                <Property Name="CompanyCode" Type="Edm.String" isUnique="false"/>
+                <Property Name="PoCategory" Type="Edm.String" isUnique="false"/>
+                <Property Name="VendorAccountNumber" Type="Edm.String" isUnique="false"/>
+                <Property Name="StartDateOfValidity" Type="Edm.DateTimeOffset" isUnique="false"/>
+                <Property Name="EndDateOfValidity" Type="Edm.DateTimeOffset" isUnique="false"/>
+                <Property Name="VendorTelephoneNumber" Type="Edm.Int64" isUnique="false"/>
+                <Property Name="ShippingType" Type="Edm.String" isUnique="false"/>
+                <Property Name="DestinationCityCode" Type="Edm.Int32" isUnique="false"/>
+                <Property Name="IsApproved" Type="Edm.Boolean" isUnique="false"/>
+                <Property Name="ShippingAddress" Type="Model.Address" isUnique="false"/>
+                <Property Name="OrderPrice" Type="Edm.Decimal" isUnique="false"/>
+                <Property Name="TotalAmount" Type="Edm.Decimal" isUnique="false"/>
+                <Property Name="DeliveryCharges" Type="Edm.Decimal" isUnique="false"/>
+                <Property Name="SameAsServiceAddress" Type="Edm.Boolean" isUnique="false"/>
+                <Property Name="Attribute3" Type="Edm.String" isUnique="false"/>
+                <Property Name="Attribute4" Type="Edm.Boolean" isUnique="false"/>
+                <NavigationProperty Name="Items" Type="Collection(Model.OrderItem)"/>
+                <NavigationProperty Name="OUser" Type="Model.User"/>
+            </EntityType>
+            <EntityType HasStream="false" Name="Vendor">
+                <Key>
+                    <PropertyRef Name="VId"/>
+                </Key>
+                <Property Name="VId" Type="Edm.Int32" isUnique="false"/>
+                <Property Name="VendorName" Type="Edm.String" isUnique="false"/>
+                <Property Name="RegistrationNumber" Type="Edm.String" isUnique="false"/>
+                <Property Name="VendorStatus" Type="Model.OnBoardingStatus" isUnique="false"/>
+                <Property Name="DateOfRegistration" Type="Edm.Date" isUnique="false"/>
+            </EntityType>
+            <EntityType HasStream="false" Name="Product">
+                <Key>
+                    <PropertyRef Name="Product_id"/>
+                </Key>
+                <Property Name="Product_id" Type="Edm.Int32" isUnique="false"/>
+                <Property Name="Return_merchandise_authorization_nr" Type="Edm.String" isUnique="false"/>
+                <Property Name="Name" Type="Edm.String" isUnique="false"/>
+                <Property Name="Color" Type="Edm.String" isUnique="false"/>
+                <Property Name="Size" Type="Edm.Int32" isUnique="false"/>
+                <Property Name="Product_description" Type="Edm.String" isUnique="false"/>
+                <Property Name="Manufacturer" Type="Edm.String" isUnique="false"/>
+                <Property Name="Weight" Type="Edm.Single" isUnique="false"/>
+                <Property Name="UnitOfMeasurement" Type="Model.Weight" isUnique="false"/>
+                <Property Name="VendorAddress" Type="Model.Address" isUnique="false"/>
+                <NavigationProperty Name="PType" Type="Model.ProductType"/>
+                <NavigationProperty Name="ODetails" Type="Model.OtherDetails"/>
+                <NavigationProperty Name="BuyingPrice" Type="Model.ProductPrice"/>
+                <NavigationProperty Name="MainImage" Type="Model.Document"/>
+                <NavigationProperty Name="OtherImages" Type="Collection(Model.Document)"/>
+                <NavigationProperty Name="ProductVendor" Type="Model.Supplier"/>
+                <NavigationProperty Name="SellingPrice" Type="Model.ProductPrice"/>
+                <NavigationProperty Name="PComponents" Type="Collection(Model.PComponent)"/>
+                <NavigationProperty Name="Vendors" Type="Collection(Model.Vendor)"/>
+            </EntityType>
+            <EntityType HasStream="false" Name="ProductType">
+                <Key>
+                    <PropertyRef Name="PtId"/>
+                </Key>
+                <Property Name="PtId" Type="Edm.Int32" isUnique="false"/>
+                <Property Name="ProductTypeName" Type="Edm.String" isUnique="false"/>
+                <Property Name="ProductTypeDesc" Type="Edm.String" isUnique="false"/>
+                <Property Name="Address" Type="Model.Address" isUnique="false"/>
+            </EntityType>
+            <EntityType HasStream="false" Name="OtherDetails">
+                <Key>
+                    <PropertyRef Name="OtherDetailsId"/>
+                </Key>
+                <Property Name="OtherDetailsId" Type="Edm.Int32" isUnique="false"/>
+                <Property Name="ManufacturingDate" Type="Edm.DateTimeOffset" isUnique="false"/>
+                <Property Name="AvailabilityStatus" Type="Model.AvailabilityStatus" isUnique="false"/>
+                <Property Name="Size" Type="Edm.Single" isUnique="false"/>
+                <Property Name="UnitOfMeasurement" Type="Model.Size" isUnique="false"/>
+            </EntityType>
+            <EntityType HasStream="false" Name="Supplier">
+                <Key>
+                    <PropertyRef Name="SId"/>
+                </Key>
+                <Property Name="SId" Type="Edm.Int32" isUnique="false"/>
+                <Property Name="SupplierName" Type="Edm.String" isUnique="false"/>
+                <Property Name="SupplierContact" Type="Edm.String" isUnique="false"/>
+            </EntityType>
+            <EntityContainer Name="Container">
+                <EntitySet Name="Users" EntityType="Model.User"/>
+                <EntitySet Name="ShipmentItems" EntityType="Model.ShipmentItem">
+                    <NavigationPropertyBinding Path="OrderItemShipment" Target="OrderItems"/>
+                </EntitySet>
+                <EntitySet Name="PComponents" EntityType="Model.PComponent"/>
+                <EntitySet Name="OrderItems" EntityType="Model.OrderItem">
+                    <NavigationPropertyBinding Path="OIProduct" Target="Products"/>
+                </EntitySet>
+                <EntitySet Name="Documents" EntityType="Model.Document"/>
+                <EntitySet Name="ProductOnBoardings" EntityType="Model.ProductOnBoarding">
+                    <NavigationPropertyBinding Path="ProductInContext" Target="Products"/>
+                </EntitySet>
+                <EntitySet Name="ProductPrices" EntityType="Model.ProductPrice"/>
+                <EntitySet Name="Orders" EntityType="Model.Order">
+                    <NavigationPropertyBinding Path="Items" Target="OrderItems"/>
+                    <NavigationPropertyBinding Path="OUser" Target="Users"/>
+                </EntitySet>
+                <EntitySet Name="Vendors" EntityType="Model.Vendor"/>
+                <EntitySet Name="Products" EntityType="Model.Product">
+                    <NavigationPropertyBinding Path="PType" Target="ProductTypes"/>
+                    <NavigationPropertyBinding Path="ODetails" Target="OtherDetails"/>
+                    <NavigationPropertyBinding Path="BuyingPrice" Target="ProductPrices"/>
+                    <NavigationPropertyBinding Path="MainImage" Target="Documents"/>
+                    <NavigationPropertyBinding Path="OtherImages" Target="Documents"/>
+                    <NavigationPropertyBinding Path="ProductVendor" Target="Suppliers"/>
+                    <NavigationPropertyBinding Path="SellingPrice" Target="ProductPrices"/>
+                    <NavigationPropertyBinding Path="PComponents" Target="PComponents"/>
+                    <NavigationPropertyBinding Path="Vendors" Target="Vendors"/>
+                </EntitySet>
+                <EntitySet Name="ProductTypes" EntityType="Model.ProductType"/>
+                <EntitySet Name="OtherDetails" EntityType="Model.OtherDetails"/>
+                <EntitySet Name="Suppliers" EntityType="Model.Supplier"/>
+            </EntityContainer>
+            <ComplexType Name="Address">
+                <Property Name="HouseNumber" Type="Edm.String" isUnique="false"/>
+                <Property Name="Street" Type="Edm.String" isUnique="false"/>
+                <Property Name="Area" Type="Edm.String" isUnique="false"/>
+                <Property Name="AddressLine2" Type="Edm.String" isUnique="false"/>
+                <Property Name="Pincode" Type="Edm.Int32" isUnique="false"/>
+                <Property Name="State" Type="Edm.String" isUnique="false"/>
+                <Property Name="Country" Type="Edm.String" isUnique="false"/>
+            </ComplexType>
+            <EnumType Name="Size">
+                <Member Name="VerySmall" Value="0"/>
+                <Member Name="Small" Value="1"/>
+                <Member Name="Medium" Value="2"/>
+                <Member Name="Large" Value="3"/>
+                <Member Name="VeryLarge" Value="4"/>
+            </EnumType>
+            <EnumType Name="OnBoardingStatus">
+                <Member Name="NotStarted" Value="0"/>
+                <Member Name="Started" Value="1"/>
+                <Member Name="Pending" Value="2"/>
+                <Member Name="Completed" Value="3"/>
+            </EnumType>
+            <EnumType Name="AvailabilityStatus">
+                <Member Name="InStore" Value="0"/>
+                <Member Name="InDepot" Value="1"/>
+                <Member Name="InRepository" Value="2"/>
+                <Member Name="OutOfStock" Value="3"/>
+            </EnumType>
+            <EnumType Name="Weight">
+                <Member Name="Milligram" Value="0"/>
+                <Member Name="Gram" Value="1"/>
+                <Member Name="Kilogram" Value="2"/>
+                <Member Name="Ton" Value="3"/>
+                <Member Name="Pound" Value="4"/>
+                <Member Name="Ounce" Value="5"/>
+            </EnumType>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

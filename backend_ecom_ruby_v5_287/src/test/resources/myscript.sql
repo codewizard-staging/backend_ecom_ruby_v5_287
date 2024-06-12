@@ -1,0 +1,1 @@
+CREATE SCHEMA IF NOT EXISTS ecom_ruby_v5;
